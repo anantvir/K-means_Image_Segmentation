@@ -3,13 +3,20 @@ import random
 import numpy
 import math
 import operator
+import os
+import sys
 
-#load data
-image=Image.open('D:\\Courses\\SPRING19\\MachineLearning\\HW3\\color.JPG','r')
+
+image_path = os.path.join(os.getcwd(), sys.argv[1])
+image_name = os.path.splitext(os.path.basename(sys.argv[1]))[0]
+
+#Read in the image as pixel values and get its size
+image=Image.open(image_path,'r')
 width, height=image.size
 imagePixels=list(image.getdata())
 data=bytes("",'utf-8')
 
+#Input value of K. Or loop through a list of values of K
 K=3
 initialCenters=set()
 #choose K random centers
